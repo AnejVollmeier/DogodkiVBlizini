@@ -1,0 +1,913 @@
+@media (max-width: 768px) {
+
+    /* Preventing horizontal scroll and zoom-out functionality */
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    /* Preventing zoom-out functionality on mobile devices */
+    @viewport {
+        zoom: 1.0;
+        width: device-width;
+    }
+
+    /* Bootstrap container */
+    .container,
+    .container-fluid {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .col,
+    .col-*,
+    [class*="col-"] {
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Global text fixes */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    div,
+    a {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Hyphenation only for specific pages, not for profile */
+    :not([title*="Profil"]) h1,
+    :not([title*="Profil"]) h2,
+    :not([title*="Profil"]) h3,
+    :not([title*="Profil"]) h4,
+    :not([title*="Profil"]) h5,
+    :not([title*="Profil"]) h6,
+    :not([title*="Profil"]) p {
+        hyphens: auto;
+    }
+
+    /* Event-card date */
+    .event-card .event-date>* {
+        white-space: normal !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Event-card location */
+    .event-card .event-location>span {
+        white-space: normal !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: calc(100% - 25px);
+    }
+
+    /* Date-single-line */
+    .event-date-list-view .date-single-line span {
+        white-space: normal !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    /* Date-block-list-view */
+    .event-date-list-view .date-block-list-view span {
+        white-space: normal !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Email elements */
+    .email-wrapper,
+    .organizer-email-link {
+        white-space: normal !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-all;
+    }
+}
+
+/* Mobile fixes for different screen sizes */
+@media (max-width: 991px) {
+
+    /* Navbar */
+    .navbar-nav {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .navbar-brand {
+        max-width: 70%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Event cards in grid view */
+    .event-card {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    /* Tables at medium size */
+    .table-responsive {
+        border: none;
+        font-size: 0.9rem;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.5rem 0.25rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Reducing font sizes */
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    /* Event title */
+    .event-title {
+        font-size: 2.5rem !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.2;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.7rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 0.75rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: 1.1rem;
+    }
+
+    /* Card */
+    .card {
+        max-width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .card-body,
+    .card-text,
+    .card-title {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+
+    /* Form */
+    .form-control,
+    .form-select {
+        max-width: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Button */
+    .btn {
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        margin-bottom: 0.25rem;
+    }
+
+    .btn-group {
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+
+    .btn-group .btn {
+        margin: 0.125rem;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    /* Event organizer email */
+    .event-organizer-email {
+        flex-wrap: wrap;
+        max-width: 100%;
+        word-break: break-all;
+    }
+
+    .email-wrapper {
+        flex: 1;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    /* Event details */
+    .event-date,
+    .event-location,
+    .event-organizer {
+        font-size: 1.3rem;
+        flex-wrap: wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Event background */
+    .event-bg {
+        padding: 60px 0 40px;
+        background-attachment: scroll;
+    }
+
+    /* Countdown */
+    .countdown-digit {
+        font-size: 1.8rem;
+    }
+
+    /* Map */
+    .event-map {
+        height: 250px;
+    }
+
+    /* Container padding reduction */
+    .container,
+    .container-fluid {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    /* Profile */
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-header .profile-picture {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .testimonial-quote {
+        font-size: 1rem;
+    }
+
+    /* Hot events */
+    .hot-event-item {
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        -moz-hyphens: none !important;
+        word-break: normal !important;
+    }
+
+    .hot-event-name {
+        font-size: 1rem;
+        flex: 1 1 100%;
+        margin-top: 5px;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        -moz-hyphens: none !important;
+        word-break: normal !important;
+    }
+}
+
+@media (max-width: 576px) {
+
+    /* Further font size reduction */
+    body {
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    /* Event title for small phones */
+    .event-title {
+        font-size: 2rem !important;
+        padding: 10px 15px;
+    }
+
+    /* Container padding reduction for smaller phones */
+    .container,
+    .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    /* Navbar for smaller phones */
+    .navbar {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    /* Event cards for smaller phones */
+    .event-card {
+        padding: 0.75rem;
+        border-radius: 8px;
+    }
+
+    .event-date,
+    .event-location {
+        font-size: 1.2rem;
+    }
+
+    /* Button for smaller phones */
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    /* Form for smaller phones */
+    .form-control {
+        padding: 0.4rem;
+        font-size: 1.2rem;
+    }
+
+    /* Table for smaller phones */
+    .table {
+        font-size: 0.8rem;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.25rem;
+        max-width: 120px;
+        font-size: 0.9rem;
+    }
+
+    /* Hot events for smaller phones */
+    .hot-events-title {
+        font-size: 1.5rem;
+    }
+
+    .hot-event-number {
+        font-size: 1rem;
+        width: 25px;
+    }
+
+    .hot-event-img {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Social buttons */
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    /* Countdown for smaller phones */
+    .countdown-digit {
+        font-size: 1.5rem;
+    }
+
+    .countdown-label {
+        font-size: 0.7rem;
+    }
+
+    /* Long URLs and emails */
+    a[href*="@"],
+    a[href*="http"],
+    a[href*="www"] {
+        word-break: break-all;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* Pre-formatted text */
+    pre,
+    code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 376px) {
+
+    /* Fixes for very small phones */
+    body {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Event title for very small phones */
+    .event-title {
+        font-size: 1.8rem !important;
+        padding: 8px 12px;
+    }
+
+    /* Navbar for very small phones */
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    /* Additional fixes for small elements */
+    .btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .form-control {
+        padding: 0.3rem;
+        font-size: 1rem;
+    }
+
+    .table {
+        font-size: 0.75rem;
+    }
+
+    .countdown-digit {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 320px) {
+
+    /* Fixes for smallest phones */
+    body {
+        font-size: 11px;
+    }
+
+    .event-title {
+        font-size: 1.5rem !important;
+        padding: 5px 10px;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .countdown-digit {
+        font-size: 1rem;
+    }
+}
+
+/* Landscape orientation fixes for phones */
+@media (max-width: 768px) and (orientation: landscape) {
+    .event-bg {
+        padding: 40px 0 30px;
+    }
+
+    .event-title {
+        font-size: 2.2rem !important;
+    }
+
+    .navbar {
+        padding: 0.25rem 1rem;
+    }
+}
+
+/* Print media fixes */
+@media print {
+    .event-bg {
+        background: white !important;
+        color: black !important;
+    }
+
+    .navbar {
+        display: none !important;
+    }
+
+    * {
+        overflow: visible !important;
+        white-space: normal !important;
+    }
+}
+
+/* Additional fixes for problematic elements */
+@media (max-width: 768px) {
+
+    /* Fix for Bootstrap modal on mobile devices */
+    .modal-dialog {
+        max-width: 95%;
+        margin: 1.75rem auto;
+    }
+
+    /* Fix for dropdown menus */
+    .dropdown-menu {
+        max-width: 90vw;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Fix for tooltips */
+    .tooltip {
+        font-size: 0.8rem;
+    }
+
+    /* Fix for alerts */
+    .alert {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Fix for badges */
+    .badge {
+        font-size: 0.7rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    /* Fix for progress bars */
+    .progress {
+        height: 15px;
+    }
+
+    /* Fix for breadcrumbs */
+    .breadcrumb {
+        flex-wrap: wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Fix for pagination */
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .page-link {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* IE/Edge specific fixes */
+@supports (-ms-ime-align: auto) {
+
+    .event-title,
+    .card-title,
+    .navbar-brand {
+        word-break: break-word;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+}
+
+/* Firefox specific fixes */
+@-moz-document url-prefix() {
+    @media (max-width: 768px) {
+        .event-title {
+            -moz-hyphens: auto;
+            hyphens: auto;
+        }
+
+        /* Preventing hyphenation on profile page for Firefox */
+        [title*="Profil"] .event-title,
+        [title*="Profil"] h1,
+        [title*="Profil"] h2,
+        [title*="Profil"] h3,
+        [title*="Profil"] h4,
+        [title*="Profil"] h5,
+        [title*="Profil"] h6,
+        [title*="Profil"] p,
+        .profile-header *,
+        .profile-stats-card * {
+            -moz-hyphens: none;
+            hyphens: none;
+        }
+    }
+}
+
+/* Additional fixes to prevent hyphenation on profile page */
+@media (max-width: 768px) {
+
+    /* Preventing hyphens for all elements on profile page */
+    [title*="Profil"] h1,
+    [title*="Profil"] h2,
+    [title*="Profil"] h3,
+    [title*="Profil"] h4,
+    [title*="Profil"] h5,
+    [title*="Profil"] h6,
+    [title*="Profil"] p,
+    [title*="Profil"] span,
+    [title*="Profil"] div,
+    [title*="Profil"] a,
+    [title*="Profil"] label,
+    [title*="Profil"] input,
+    .profile-header *,
+    .profile-stats-card *,
+    #user-fullname,
+    #user-email,
+    .form-label,
+    .card-body h1,
+    .card-body h2,
+    .card-body h3,
+    .card-body h4,
+    .card-body h5,
+    .card-body h6,
+    .card-body p,
+    .card-body span,
+    .card-body div,
+    .card-body a,
+    .card-body label {
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        -moz-hyphens: none !important;
+        word-break: normal !important;
+    }
+
+    /* Ensuring words break only at natural boundaries */
+    .profile-header,
+    .profile-stats-card,
+    .card-body {
+        word-break: normal !important;
+        overflow-wrap: break-word;
+        hyphens: none !important;
+    }
+}
+
+/* Fixes for profile page - ensuring user type stays within bounds */
+@media (max-width: 768px) {
+
+    /* Profile header fixes */
+    .profile-header {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    .profile-header h1 {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+        text-align: center !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .profile-header h1 .badge {
+        max-width: 100% !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        flex-shrink: 0 !important;
+        margin-top: 10px !important;
+    }
+
+    /* Ensure profile image and data don't cause overflow */
+    .profile-img {
+        margin-right: 0 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .profile-header .d-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-header h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .profile-header h1 .badge {
+        font-size: 0.8rem !important;
+        padding: 4px 8px !important;
+    }
+}
+
+@media (max-width: 495px) {
+
+    /* Fix for "Logout" button in registered events table */
+    .user-events-table .btn,
+    .upcoming-events .btn {
+        font-size: 1rem !important;
+        padding: 0.25rem 0.5rem !important;
+        min-width: auto !important;
+        white-space: nowrap !important;
+    }
+
+    /* Specific fix for logout button in table */
+    .user-events-table .btn-danger,
+    .upcoming-events .btn-danger {
+        font-size: 0.75rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+
+    /* Ensure table doesn't cause overflow */
+    .user-events-table td {
+        padding: 0.25rem 0.125rem !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+
+    /* Hide view toggle buttons on small screens */
+    .view-toggle-buttons,
+    #gridViewBtn,
+    #listViewBtn,
+    .btn-group:has(#gridViewBtn),
+    .btn-group:has(#listViewBtn) {
+        display: none !important;
+    }
+
+    /* Always show grid view (cards) */
+    #gridView {
+        display: block !important;
+    }
+
+    #listView {
+        display: none !important;
+    }
+
+    /* Special styling for "Buy tickets" button on small screens */
+    #nakup-vstopnic-btn {
+        font-size: 1.1rem !important;
+        min-height: 50px !important;
+        width: 100% !important;
+        max-width: 300px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-items: left !important;
+        font-weight: 600 !important;
+    }
+
+    #nakup-vstopnic-btn i {
+        font-size: 1.1rem !important;
+        margin-right: 0.75rem !important;
+    }
+}
+
+/* Medium-large screens - custom breakpoint for pagination */
+@media (min-width: 769px) and (max-width: 1400px) {
+
+    /* Pagination fixes for medium-large screens */
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    .pagination .page-item {
+        margin: 0.125rem;
+    }
+
+    .page-link {
+        padding: 0.375rem 0.6rem;
+        font-size: 0.875rem;
+        min-width: 40px;
+        text-align: center;
+    }
+
+    /* If there are too many pages, hide middle numbers */
+    .pagination .page-item:nth-child(n+8):nth-last-child(n+4) {
+        display: none;
+    }
+}
+
+/* Additional fixes for medium screens */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .pagination {
+        margin: 0 auto;
+    }
+
+    .page-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Fixes for contact form on small screens */
+@media (max-width: 576px) {
+    #contact-form .row {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #contact-form .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+        width: 100%;
+        max-width: 100%;
+        text-align: left;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    body:has(.card-body form#login-form) main,
+    body:has(.card-body form#registration-form) main {
+        padding-bottom: 2rem;
+    }
+}

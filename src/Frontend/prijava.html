@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>SkupajTukaj - Dogodki v bližini</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dark_style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile.css" />
+  </head>
+  <body>
+    <script src="js/tema.js"></script>
+    <!-- Navigacijska vrstica -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light position-relative"
+    >
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">SkupajTukaj</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Domov</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dogodki.html">Dogodki</a>
+            </li>
+          </ul>
+          <!-- DARK MODE SWITCHER -->
+          <div class="darkmode-switch">
+            <label class="switch mb-0">
+              <input type="checkbox" id="darkModeToggle" />
+              <span class="slider">
+                <i class="fas fa-moon moon-icon"></i>
+                <i class="fas fa-sun sun-icon"></i>
+              </span>
+            </label>
+          </div>
+
+          <div class="d-none d-md-block">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">ime in priimek</li>
+            </ul>
+          </div>
+
+          <!-- Prijava + Registracija za male zaslone -->
+          <div class="d-block d-lg-none">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="prijava.html">Prijava</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="registracija.html">Registracija</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Ikona s spustnim menijem za večje zaslone -->
+          <div class="nav-item dropdown position-relative d-none d-md-block">
+            <a
+              class="nav-link"
+              href="#"
+              id="profileDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-person-circle fs-1 navbar-profile-icon"></i>
+            </a>
+            <ul
+              class="dropdown-menu custom-profile-dropdown"
+              aria-labelledby="profileDropdown"
+            >
+              <li><a class="dropdown-item" href="prijava.html">Prijava</a></li>
+              <li>
+                <a class="dropdown-item" href="registracija.html"
+                  >Registracija</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="banner text-white py-4">
+      <div class="container text-center">
+        <h2>Prijava uporabnika</h2>
+        <p>Prijavite se za boljšo uporabniško izkušnjo</p>
+      </div>
+    </section>
+
+    <main class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm">
+              <div class="card-body p-4">
+                <!-- Obrazec za prijavo -->
+                <form id="login-form" class="needs-validation" novalidate>
+                  <div class="text-center mb-4">
+                    <i
+                      class="bi bi-person-circle text-primary"
+                      style="font-size: 3rem"
+                    ></i>
+                    <h3 class="mt-2">Prijava</h3>
+                  </div>
+
+                  <div class="alert alert-danger d-none" id="login-error">
+                    Napačno uporabniško ime ali geslo.
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="bi bi-envelope"></i
+                      ></span>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-control"
+                        required
+                        autocomplete="email"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="password" class="form-label">Geslo:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="bi bi-key"></i
+                      ></span>
+                      <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-control"
+                        required
+                        autocomplete="current-password"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="bi bi-box-arrow-in-right me-2"></i>Prijava
+                    </button>
+                  </div>
+
+                  <div class="text-center mt-3">
+                    <p class="mb-0">
+                      Nimate računa?
+                      <a href="registracija.html" class="text-decoration-none"
+                        >Registrirajte se</a
+                      >
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>SkupajTukaj</h5>
+            <p>Povezujemo lokalne organizatorje dogodkov z obiskovalci</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Hitre povezave</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white-50">Domov</a></li>
+              <li><a href="dogodki.html" class="text-white-50">Dogodki</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Sledite nam</h5>
+            <div>
+              <a href="https://www.facebook.com/profile.php?id=61577090338069" class="text-white me-3 fs-4"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="https://x.com/SkupajTukaj" class="text-white me-3 fs-4"
+                ><i class="bi bi-twitter-x"></i
+              ></a>
+              <a href="https://www.instagram.com/skupajtukaj/" class="text-white fs-4"
+                ><i class="bi bi-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <p class="mb-0">&copy; 2025 SkupajTukaj. Vse pravice pridržane.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <script src="js/prijava.js"></script>
+    <script src="js/auth-status.js"></script>
+  </body>
+</html>

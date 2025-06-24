@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Upravljanje Uporabnikov - SkupajTukaj</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <link href="dark_style.css" rel="stylesheet" />
+    <link href="mobile.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script src="js/tema.js"></script>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light position-relative"
+    >
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">SkupajTukaj</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Domov</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dogodki.html">Dogodki</a>
+            </li>
+          </ul>
+          <div class="darkmode-switch">
+            <label class="switch mb-0">
+              <input type="checkbox" id="darkModeToggle" />
+              <span class="slider">
+                <i class="fas fa-moon moon-icon"></i>
+                <i class="fas fa-sun sun-icon"></i>
+              </span>
+            </label>
+          </div>
+
+          <div class="d-none d-md-block">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item" id="user-name-placeholder">
+                ime in priimek
+              </li>
+            </ul>
+          </div>
+
+          <div class="d-block d-lg-none" id="auth-links-mobile-placeholder">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="prijava.html">Prijava</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="registracija.html">Registracija</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="nav-item dropdown position-relative d-none d-md-block"
+            id="auth-dropdown-desktop-placeholder"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              id="profileDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-person-circle fs-1 navbar-profile-icon"></i>
+            </a>
+            <ul
+              class="dropdown-menu custom-profile-dropdown"
+              aria-labelledby="profileDropdown"
+            >
+              <li><a class="dropdown-item" href="prijava.html">Prijava</a></li>
+              <li>
+                <a class="dropdown-item" href="registracija.html"
+                  >Registracija</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <div class="row">
+        <!-- User Form Column -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 id="form-title">Nov uporabnik</h3>
+              <form id="uporabnik-form" class="needs-validation" novalidate>
+                <input type="hidden" id="uporabnik-id" />
+                <div class="mb-3">
+                  <label for="ime" class="form-label">Ime</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="ime"
+                    name="ime"
+                    required
+                    maxlength="45"
+                  />
+                  <div class="invalid-feedback">Prosimo, vnesite ime.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="priimek" class="form-label">Priimek</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="priimek"
+                    name="priimek"
+                    required
+                    maxlength="45"
+                  />
+                  <div class="invalid-feedback">Prosimo, vnesite priimek.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    required
+                    maxlength="100"
+                  />
+                  <div class="invalid-feedback">
+                    Prosimo, vnesite veljaven email naslov.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="datum-rojstva" class="form-label"
+                    >Datum rojstva</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="datum-rojstva"
+                    name="datum-rojstva"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Prosimo, vnesite datum rojstva.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="tip-uporabnika" class="form-label"
+                    >Tip uporabnika</label
+                  >
+                  <select
+                    class="form-select"
+                    id="tip-uporabnika"
+                    name="tip-uporabnika"
+                    required
+                  >
+                    <option value="">Izberite tip uporabnika</option>
+                    <option value="Obiskovalec">Obiskovalec</option>
+                    <option value="Organizator">Organizator</option>
+                    <option value="Administrator">Administrator</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Prosimo, izberite tip uporabnika.
+                  </div>
+                </div>
+                <div id="password-group">
+                  <div class="mb-3">
+                    <label for="geslo" class="form-label">Geslo</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="geslo"
+                      name="geslo"
+                      required
+                      maxlength="500"
+                    />
+                    <div class="invalid-feedback">Prosimo, vnesite geslo.</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="potrdi-geslo" class="form-label"
+                      >Potrdi geslo</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="potrdi-geslo"
+                      required
+                      maxlength="500"
+                    />
+                    <div class="invalid-feedback">Prosim potrdite geslo.</div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="slika" class="form-label">Profilna slika</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="slika"
+                    name="slika"
+                    accept="image/*"
+                  />
+                </div>
+                <div class="d-flex justify-content-between">
+                  <button type="submit" class="btn btn-primary">
+                    Shrani uporabnika
+                  </button>
+                  <button
+                    type="button"
+                    id="reset-form"
+                    class="btn btn-secondary"
+                  >
+                    Ponastavi
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- User List Column -->
+        <div class="col-md-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+              <h2 class="h5 mb-0">Seznam uporabnikov</h2>
+            </div>
+            <div class="card-body">
+              <!-- Search Form -->
+              <form id="searchForm" class="mb-3">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control"
+                    placeholder="Išči po imenu/priimku..."
+                  />
+                  <button type="submit" class="btn btn-primary">Išči</button>
+                </div>
+              </form>
+
+              <!-- Filter Form - Updated structure and button styles -->
+              <form id="filterForm" class="mb-4">
+                <div class="mb-3">
+                  <label for="userType" class="form-label"
+                    >Tip uporabnika</label
+                  >
+                  <select id="userType" class="form-select">
+                    <option value="">Vsi tipi</option>
+                    <option value="Obiskovalec">Obiskovalec</option>
+                    <option value="Organizator">Organizator</option>
+                    <option value="Administrator">Administrator</option>
+                  </select>
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-primary">
+                    Filtriraj
+                  </button>
+                  <button type="reset" class="btn btn-outline-secondary ms-2">
+                    Ponastavi filtre
+                  </button>
+                </div>
+              </form>
+
+              <div class="table-responsive">
+                <table class="table table-hover upcoming-events">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Ime</th>
+                      <th>Priimek</th>
+                      <th>Email</th>
+                      <th>Tip</th>
+                      <th class="text-center">Akcije</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- User rows will be dynamically inserted here -->
+                  </tbody>
+                </table>
+              </div>
+              <!-- Pagination -->
+              <nav aria-label="User pagination">
+                <ul class="pagination justify-content-center" id="paginationUl">
+                  <!-- Pagination items will be dynamically inserted here -->
+                </ul>
+              </nav>
+              <input type="hidden" id="currentPage" value="1" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Events Section - Moved here to be full width below the columns -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <div id="user-events-container">
+            <!-- User's events will be dynamically loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>SkupajTukaj</h5>
+            <p>Povezujemo lokalne organizatorje dogodkov z obiskovalci</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Hitre povezave</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white-50">Domov</a></li>
+              <li><a href="dogodki.html" class="text-white-50">Dogodki</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Sledite nam</h5>
+            <div>
+              <a href="https://www.facebook.com/profile.php?id=61577090338069" class="text-white me-3 fs-4"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="https://x.com/SkupajTukaj" class="text-white me-3 fs-4"
+                ><i class="bi bi-twitter-x"></i
+              ></a>
+              <a href="https://www.instagram.com/skupajtukaj/" class="text-white fs-4"
+                ><i class="bi bi-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <p class="mb-0">&copy; 2025 SkupajTukaj. Vse pravice pridržane.</p>
+        </div>
+      </div>
+    </footer>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/encode-output.js"></script>
+    <script src="js/auth-status.js"></script>
+    <script src="js/upravljanje_uporabnikov.js"></script>
+  </body>
+</html>

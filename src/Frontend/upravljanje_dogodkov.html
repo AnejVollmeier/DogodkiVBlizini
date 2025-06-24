@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>SkupajTukaj - Upravljanje dogodkov</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dark_style.css" />
+    <link rel="stylesheet" href="mobile.css" />
+  </head>
+  <body>
+    <script src="js/tema.js"></script>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light position-relative"
+    >
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">SkupajTukaj</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Domov</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dogodki.html">Dogodki</a>
+            </li>
+          </ul>
+          <!-- DARK MODE SWITCHER -->
+          <div class="darkmode-switch">
+            <label class="switch mb-0">
+              <input type="checkbox" id="darkModeToggle" />
+              <span class="slider">
+                <i class="fas fa-moon moon-icon"></i>
+                <i class="fas fa-sun sun-icon"></i>
+              </span>
+            </label>
+          </div>
+
+          <div class="d-none d-md-block">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">ime in priimek</li>
+            </ul>
+          </div>
+
+          <!-- Prijava + Registracija za male zaslone -->
+          <div class="d-block d-lg-none">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="prijava.html">Prijava</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="registracija.html">Registracija</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Ikona s spustnim menijem za večje zaslone -->
+          <div class="nav-item dropdown position-relative d-none d-md-block">
+            <a
+              class="nav-link"
+              href="#"
+              id="profileDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-person-circle fs-1 navbar-profile-icon"></i>
+            </a>
+            <ul
+              class="dropdown-menu custom-profile-dropdown"
+              aria-labelledby="profileDropdown"
+            >
+              <li><a class="dropdown-item" href="prijava.html">Prijava</a></li>
+              <li>
+                <a class="dropdown-item" href="registracija.html"
+                  >Registracija</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="text-white py-4 banner">
+      <div class="container text-center">
+        <h2>Upravljanje dogodkov</h2>
+        <p>Dodajte nov dogodek ali uredite obstoječe dogodke</p>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="form-section p-4 mb-5 rounded shadow-lg bg-light">
+          <h3 class="mb-4" id="form-title">Nov dogodek</h3>
+          <form id="dogodek-form" class="needs-validation" novalidate>
+            <input type="hidden" id="dogodek-id" value="" />
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="naslov" class="form-label">Naslov dogodka</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="naslov"
+                  name="naslov"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Prosimo, vnesite naslov dogodka.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="tip-dogodka" class="form-label"
+                  >Vrsta dogodka</label
+                >
+                <select
+                  class="form-select"
+                  id="tip-dogodka"
+                  name="tip-dogodka"
+                  required
+                >
+                  <option value="" selected disabled>
+                    Izberite vrsto dogodka
+                  </option>
+                  <option value="1">Koncert</option>
+                  <option value="2">Izobrazevanje</option>
+                  <option value="3">Sport</option>
+                  <option value="4">Sejem</option>
+                  <option value="5">Zabava</option>
+                </select>
+                <div class="invalid-feedback">
+                  Prosimo, izberite vrsto dogodka.
+                </div>
+              </div>
+            </div>
+            <div class="row g-3 mb-3">
+              <div class="col-md-3">
+                <label for="ulica" class="form-label">Ulica</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="ulica"
+                  name="ulica"
+                />
+                <div class="invalid-feedback">Prosimo, vnesite ulico.</div>
+              </div>
+              <div class="col-md-3">
+                <label for="hisna-stevilka" class="form-label"
+                  >Hišna številka</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="hisna-stevilka"
+                  name="hisna-stevilka"
+                />
+                <div class="invalid-feedback">
+                  Prosimo, vnesite hišno številko.
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="postna-stevilka" class="form-label"
+                  >Poštna številka</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="postna-stevilka"
+                  name="postna-stevilka"
+                  pattern="[0-9]{4}"
+                />
+                <div class="invalid-feedback">
+                  Prosimo, vnesite veljavno poštno številko (npr. 1000).
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="obcina" class="form-label">Občina</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="obcina"
+                  name="obcina"
+                />
+                <div class="invalid-feedback">Prosimo, vnesite občino.</div>
+              </div>
+            </div>
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="cas" class="form-label">Datum in čas dogodka</label>
+                <input
+                  type="datetime-local"
+                  class="form-control"
+                  id="cas"
+                  name="cas"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Prosimo, izberite datum in čas dogodka.
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="slika" class="form-label custom-file-upload"
+                  >Naloži sliko</label
+                >
+                <input
+                  type="file"
+                  class="form-control"
+                  id="slika"
+                  name="slika"
+                  accept="image/*"
+                />
+                <div class="valid-feedback">Slika ni obvezna.</div>
+              </div>
+              <div class="col-md-3">
+                <label for="cena" class="form-label">Cena vstopnice</label>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    max="9999.99"
+                    class="form-control"
+                    id="cena"
+                    name="cena"
+                    required
+                  />
+                  <span class="input-group-text">€</span>
+                </div>
+                <div class="invalid-feedback">
+                  Prosimo vnesite ceno vstopnice (največ 9999,99 €).
+                </div>
+              </div>
+            </div>
+            <div class="row g-3 mb-3">
+              <div class="col-md-12">
+                <label for="eventim_url" class="form-label"
+                  >Eventim URL za nakup vstopnic</label
+                >
+                <input
+                  type="url"
+                  class="form-control"
+                  id="eventim_url"
+                  name="eventim_url"
+                  placeholder="https://www.eventim.si/..."
+                />
+                <div class="form-text">
+                  Neobvezno - dodajte povezavo za nakup vstopnic preko Eventima
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="opis" class="form-label">Opis dogodka</label>
+              <textarea
+                class="form-control"
+                id="opis"
+                name="opis"
+                rows="4"
+                required
+                minlength="20"
+              ></textarea>
+              <div class="invalid-feedback">
+                Prosimo, vnesite opis dogodka (vsaj 20 znakov).
+              </div>
+            </div>
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="je-promoviran"
+                name="je-promoviran"
+              />
+              <label class="form-check-label" for="je-promoviran">
+                Promoviran dogodek
+              </label>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" id="reset-form">
+                Prekliči
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Shrani dogodek
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="upcoming-events">
+          <h3 class="upcoming-events-title">
+            <i class="bi bi-calendar-event"></i> Upravljanje dogodkov
+          </h3>
+          <p class="text-muted">Pregled vseh dogodkov.</p>
+
+          <!-- Add search form -->
+          <div class="mb-4">
+            <form id="searchForm">
+              <div class="input-group">
+                <span class="input-group-text bg-white">
+                  <i class="bi bi-search"></i>
+                </span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="searchInput"
+                  placeholder="Išči dogodke po naslovu"
+                  aria-label="Išči dogodke"
+                />
+                <button class="btn btn-primary" type="submit">Išči</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Add filter form -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Filtriraj dogodke</h5>
+              <form id="filterForm" class="row g-3">
+                <div class="col-md-4">
+                  <label for="eventType" class="form-label"
+                    >Vrsta dogodka</label
+                  >
+                  <select class="form-select" id="eventType">
+                    <option selected value="">Vse vrste dogodkov</option>
+                    <option>Koncert</option>
+                    <option>Izobraževanje</option>
+                    <option>Šport</option>
+                    <option>Sejem</option>
+                    <option>Zabava</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="dateRange" class="form-label"
+                    >Časovno obdobje</label
+                  >
+                  <div class="input-group">
+                    <input type="date" class="form-control" id="startDate" />
+                    <span class="input-group-text">do</span>
+                    <input type="date" class="form-control" id="endDate" />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="promotedFilter" class="form-label"
+                    >Promoviranost</label
+                  >
+                  <select class="form-select" id="promotedFilter">
+                    <option selected value="">Vsi dogodki</option>
+                    <option value="1">Promovirani</option>
+                    <option value="0">Nepromovirani</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">
+                    Filtriraj
+                  </button>
+                  <button type="reset" class="btn btn-outline-secondary ms-2">
+                    Ponastavi filtre
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Naslov</th>
+                  <th>Tip dogodka</th>
+                  <th>Lokacija</th>
+                  <th>Čas</th>
+                  <th>Promoviran</th>
+                  <th class="text-center">Akcije</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Events will be loaded here dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Add pagination -->
+          <input type="hidden" id="currentPage" value="1" />
+          <nav aria-label="Page navigation" class="mt-4">
+            <ul
+              class="pagination justify-content-center"
+              id="paginationUl"
+            ></ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>SkupajTukaj</h5>
+            <p>Povezujemo lokalne organizatorje dogodkov z obiskovalci</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Hitre povezave</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white-50">Domov</a></li>
+              <li><a href="dogodki.html" class="text-white-50">Dogodki</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Sledite nam</h5>
+            <div>
+              <a href="https://www.facebook.com/profile.php?id=61577090338069" class="text-white me-3 fs-4"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="https://x.com/SkupajTukaj" class="text-white me-3 fs-4"
+                ><i class="bi bi-twitter-x"></i
+              ></a>
+              <a href="https://www.instagram.com/skupajtukaj/" class="text-white fs-4"
+                ><i class="bi bi-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <p class="mb-0">&copy; 2025 SkupajTukaj. Vse pravice pridržane.</p>
+        </div>
+      </div>
+    </footer>    <script src="js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/encode-output.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <script src="js/upravljanje_dogodkov.js"></script>
+    <script src="js/auth-status.js"></script>
+  </body>
+</html>

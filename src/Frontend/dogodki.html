@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Dogodki - SkupajTukaj</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dark_style.css" />
+    <link rel="stylesheet" href="mobile.css" />
+    <script src="js/tema.js"></script>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  </head>
+    <script src="js/tema.js"></script>
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light position-relative"
+  >
+    <div class="container">
+      <a class="navbar-brand logo" href="index.html">SkupajTukaj</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Domov</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dogodki.html">Dogodki</a>
+          </li>
+        </ul>
+            <!-- DARK MODE SWITCHER -->
+        <div class="darkmode-switch">
+          <label class="switch mb-0">
+            <input type="checkbox" id="darkModeToggle" />
+            <span class="slider">
+              <i class="fas fa-moon moon-icon"></i>
+              <i class="fas fa-sun sun-icon"></i>
+            </span>
+          </label>
+        </div>
+
+        <div class="d-none d-md-block">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">ime in priimek</li>
+          </ul>
+        </div>
+
+        <!-- Prijava + Registracija za male zaslone -->
+        <div class="d-block d-lg-none">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="prijava.html">Prijava</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="registracija.html">Registracija</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Ikona s spustnim menijem za večje zaslone -->
+        <div class="nav-item dropdown position-relative d-none d-md-block">
+          <a
+            class="nav-link"
+            href="#"
+            id="profileDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-circle fs-1 navbar-profile-icon"></i>
+          </a>
+          <ul
+            class="dropdown-menu custom-profile-dropdown"
+            aria-labelledby="profileDropdown"
+          >
+            <li><a class="dropdown-item" href="prijava.html">Prijava</a></li>
+            <li>
+              <a class="dropdown-item" href="registracija.html"
+                >Registracija</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="text-white py-4 banner">
+    <div class="container text-center">
+      <h2>Dogodki v bližini</h2>
+      <p>Poglejte si raznolik nabor dogodkov v vaši bližini</p>
+    </div>
+  </section>
+
+  <section class="py-4">
+    <div class="container">
+      <div class="mb-4">
+        <form id="searchForm">
+          <div class="input-group input-group-lg">
+            <span class="input-group-text bg-white">
+              <i class="bi bi-search"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control big-search-input"
+              id="searchInput"
+              placeholder="Išči dogodke po naslovu, opisu ali lokaciji..."
+              aria-label="Išči dogodke"
+            />
+            <button class="btn btn-primary" type="submit">Išči</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="toggleFilter" />
+        <label class="form-check-label" for="toggleFilter">
+          Prikaži napredno filtriranje
+        </label>
+      </div>
+
+      <div id="filterCard" class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Filtriraj dogodke</h5>
+          <form class="row g-3">
+            <div class="col-md-4">
+              <label for="location" class="form-label">Lokacija</label>
+              <input
+                type="text"
+                class="form-control"
+                id="location"
+                placeholder="Vnesite mesto ali območje"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="eventType" class="form-label">Vrsta dogodka</label>
+              <select class="form-select" id="eventType">
+                <option selected value="">Vse vrste dogodkov</option>
+                <option>Koncert</option>
+                <option>Izobraževanje</option>
+                <option>Šport</option>
+                <option>Sejem</option>
+                <option>Zabava</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="dateRange" class="form-label"
+                >Časovno obdobje</label
+              >
+              <div class="input-group">
+                <input type="date" class="form-control" id="startDate" />
+                <span class="input-group-text">do</span>
+                <input type="date" class="form-control" id="endDate" />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="priceRange" class="form-label"
+                >Cenovni razpon</label
+              >
+              <select class="form-select" id="priceRange">
+                <option selected value="">Vsi dogodki</option>
+                <option value="Brezplačno">Brezplačno</option>
+                <option value="10">Do 10€</option>
+                <option value="10-25">10€ - 25€</option>
+                <option value="25-50">25€ - 50€</option>
+                <option value="50">Nad 50€</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="sortBy" class="form-label">Razvrsti po</label>
+              <select class="form-select" id="sortBy">
+                <option selected value="date">Datumu (naraščajoče)</option>
+                <option value="date-desc">Datumu (padajoče)</option>
+                <option value="price-asc">Cena (naraščajoče)</option>
+                <option value="price-desc">Cena (padajoče)</option>
+                <option value="az">Abecedi (A-Ž)</option>
+                <option value="za">Abecedi (Ž-A)</option>
+              </select>
+            </div>
+            <div id="favorites-options" class="col-12 mt-3">
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="favoriteOrganizers"
+                />
+                <label class="form-check-label" for="favoriteOrganizers">
+                  Samo najljubši organizatorji
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="favoriteEvents"
+                />
+                <label class="form-check-label" for="favoriteEvents">
+                  Samo najljubši dogodki
+                </label>
+              </div>
+            </div> 
+              <div class="d-flex align-items-center">
+                <p class="map-toggle mb-0" id="toggleMap" role="button" aria-expanded="false">
+                  <i class="bi bi-map me-1" id="mapIcon"></i> <span id="toggleMapText">Prikaži zemljevid za iskanje po lokaciji</span>
+                </p>
+              </div>
+              <!-- Added location and radius inputs with a map container -->
+          <div class="advanced-filtering">
+            <form id="searchForm" class="row g-3">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-4">
+                  <label for="location" class="form-label">Vnesi lokacijo</label>
+                  <input
+                    type="text"
+                    id="locationr"
+                    class="form-control"
+                    placeholder="Vnesite mesto"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label for="radius" class="form-label">Radij (v km)</label>
+                  <input
+                    type="number"
+                    id="radius"
+                    class="form-control"
+                    placeholder="Vnesite število km"
+                  />
+                </div>
+                </div>
+              <div id="map" class="my-4 rounded shadow" style="height: 500px;"></div>
+          </div>
+            <div class="col-12 text-center mt-4">
+              <button type="submit" class="btn btn-primary px-4">
+                Poišči dogodke
+              </button>
+              <button type="reset" class="btn btn-outline-secondary ms-2">
+                Ponastavi filtre
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Dogodki</h2>
+        <div class="btn-group view-toggle-container">
+          <span class="view-toggle-glider"></span>
+          <button
+            id="gridViewBtn"
+            class="btn btn-outline-primary view-toggle-btn active"
+          >
+            <i class="bi bi-grid-3x3-gap-fill me-1"></i> Kartice
+          </button>
+          <button
+            id="listViewBtn"
+            class="btn btn-outline-primary view-toggle-btn"
+          >
+            <i class="bi bi-list-ul me-1"></i> Seznam
+          </button>
+        </div>
+      </div>
+
+      <!-- Pogled s karticami -->
+      <div id="gridView" class="row g-4">
+        <!-- dinamicno nalozeni elementi-->
+      </div>
+
+      <div id="listView" class="d-none">
+        <div class="list-group">
+          <!-- dinamicno nalozeni elementi-->
+        </div>
+      </div>
+
+      <!-- Paginacija -->
+      <input type="hidden" id="currentPage" value="1" />
+
+      <nav aria-label="Page navigation" class="mt-5">
+        <ul class="pagination justify-content-center" id="paginationUl"></ul>
+      </nav>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>SkupajTukaj</h5>
+          <p>Povezujemo lokalne organizatorje dogodkov z obiskovalci</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Hitre povezave</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-white-50">Domov</a></li>
+            <li><a href="dogodki.html" class="text-white-50">Dogodki</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Sledite nam</h5>
+            <div>
+              <a href="https://www.facebook.com/profile.php?id=61577090338069" class="text-white me-3 fs-4"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="https://x.com/SkupajTukaj" class="text-white me-3 fs-4"
+                ><i class="bi bi-twitter-x"></i
+              ></a>
+              <a href="https://www.instagram.com/skupajtukaj/" class="text-white fs-4"
+                ><i class="bi bi-instagram"></i
+              ></a>
+            </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <p class="mb-0">&copy; 2025 SkupajTukaj. Vse pravice pridržane.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js" ></script>
+  <script src="js/parseJwt.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+  />
+  <script src="js/dogodki.js" ></script>
+  <script src="js/auth-status.js"></script>
+  <script src="js/tema.js"></script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    .hidden {
+      display: none;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .fade-out {
+      animation: fadeOut 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    /* Štil za interaktivni element prikaza zemljevida */
+    .map-toggle {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      color: #000000;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .map-toggle {
+      color: #fcfcfc;
+    }
+      .map-toggle:hover {
+      text-decoration: underline;
+    }    /* Custom CSS for map markers */
+    .custom-center-marker {
+      background: none; 
+      border: none;
+    }
+    
+    .custom-event-marker {
+      background: none;
+      border: none;
+      position: relative;
+    }
+    
+    /* Badge for event count on marker */
+    .event-count-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: #dc3545;
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 11px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      z-index: 1001;
+      border: 2px solid white;
+    }
+    
+    /* Custom popup styling */
+    .center-marker-popup .leaflet-popup-content-wrapper {
+      background-color: rgba(255, 235, 235, 0.95);
+      border-left: 4px solid red;
+    }
+    
+    .center-marker-popup .leaflet-popup-tip {
+      background-color: rgba(255, 235, 235, 0.95);
+    }
+    
+    /* Styling for multi-event popup */
+    .multi-event-popup .leaflet-popup-content-wrapper {
+      background-color: rgba(255, 255, 255, 0.98);
+      border-left: 4px solid #0d6efd;
+      border-radius: 8px;
+    }
+    
+    .location-popup {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    
+    .events-at-location {
+      margin-top: 10px;
+    }
+      .event-item {
+      padding: 8px;
+      border-radius: 6px;
+      background-color: rgba(13, 110, 253, 0.05);
+    }
+    
+    .event-item:hover {
+      background-color: rgba(13, 110, 253, 0.1);
+    }
+    
+    .multi-event-popup .btn,
+    .multi-event-popup .btn-outline-primary {
+      background-color: white !important;
+      color: #0d6efd !important;
+      border-color: #0d6efd !important;
+    }
+    
+    .multi-event-popup .btn:hover,
+    .multi-event-popup .btn-outline-primary:hover {
+      background-color: #0d6efd !important;
+      color: white !important;
+      border-color: #0d6efd !important;
+    }
+  </style>
+</body>
+</html>

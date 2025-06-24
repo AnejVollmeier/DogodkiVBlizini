@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>SkupajTukaj - Dogodki v bližini</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="dark_style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile.css" />
+  </head>
+  <body>
+    <script src="js/tema.js"></script>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light position-relative"
+    >
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">SkupajTukaj</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Domov</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dogodki.html">Dogodki</a>
+            </li>
+          </ul>
+          <!-- DARK MODE SWITCHER -->
+          <div class="darkmode-switch">
+            <label class="switch mb-0">
+              <input type="checkbox" id="darkModeToggle" />
+              <span class="slider">
+                <i class="fas fa-moon moon-icon"></i>
+                <i class="fas fa-sun sun-icon"></i>
+              </span>
+            </label>
+          </div>
+
+          <div class="d-none d-md-block">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">ime in priimek</li>
+            </ul>
+          </div>
+
+          <!-- Prijava + Registracija za male zaslone -->
+          <div class="d-block d-lg-none">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="prijava.html">Prijava</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="registracija.html">Registracija</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Ikona s spustnim menijem za večje zaslone -->
+          <div class="nav-item dropdown position-relative d-none d-md-block">
+            <a
+              class="nav-link"
+              href="#"
+              id="profileDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-person-circle fs-1 navbar-profile-icon"></i>
+            </a>
+            <ul
+              class="dropdown-menu custom-profile-dropdown"
+              aria-labelledby="profileDropdown"
+            >
+              <li><a class="dropdown-item" href="prijava.html">Prijava</a></li>
+              <li>
+                <a class="dropdown-item" href="registracija.html"
+                  >Registracija</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Glavni razdelek -->
+    <section class="hero-section">
+      <div class="container text-center">
+        <h1 class="display-4 mb-4 pb-2">
+          <span class="site-name">SkupajTukaj</span> - Dogodki v bližini
+        </h1>
+        <p class="lead mb-5">
+          Odkrijte vznemirljive dogodke v vaši okolici! Najdite koncerte,
+          delavnice, športne dogodke, zabave in še več. Povežite se z
+          organizatorji in ne zamudite več lokalnih dogodkov.
+        </p>
+        <div class="d-flex justify-content-center">
+          <div class="big-search-box">
+            <input
+              type="text"
+              id="mainSearchInput"
+              class="form-control big-search-input"
+              placeholder="Odkrij nove dogodke"
+            />
+            <button class="btn big-search-btn" form>
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Razdelek s prihajajočimi dogodki in vročimi dogodki -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="upcoming-events">
+              <h3 class="upcoming-events-title">
+                <i class="bi bi-calendar-event"></i> Prihajajoči dogodki
+              </h3>
+              <p class="text-muted">
+                Pregled dogodkov po dnevih v naslednjih tednih
+              </p>
+              <div class="calendar-events">
+                <!-- Tukaj bodo prihajajoči dogodki dinamično naloženi iz baze -->
+                <div class="d-flex justify-content-center p-5">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Nalaganje...</span>
+                  </div>
+                  <div class="ms-3">Nalagam prihajajoče dogodke...</div>
+                </div>
+              </div>
+
+              <div class="mt-4 text-center">
+                <a href="dogodki.html" class="btn btn-outline-primary"
+                  >Vsi dogodki <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="hot-events">
+              <!-- Tukaj bodo vroči dogodki dinamično naloženi iz baze -->
+              <h3 class="hot-events-title">
+                <i class="bi bi-fire"></i> Vroči dogodki
+              </h3>
+              <div class="d-flex justify-content-center p-5">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Nalaganje...</span>
+                </div>
+                <div class="ms-3">Nalagam vroče dogodke...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Razdelek z mnenji uporabnikov -->
+    <section class="testimonials py-4 mt-2">
+      <div class="container">
+        <h2 class="text-center mb-4">Kaj pravijo uporabniki</h2>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="testimonial-card">
+              <p class="testimonial-quote">
+                SkupajTukaj mi je pomagal odkriti čudovite lokalne dogodke, ki
+                jih drugače ne bi nikoli našel. Zdaj sem vedno na tekočem z
+                dogajanjem v mestu!
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="images/dogodek6.jpg"
+                  alt="Uporabnik Marko"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h5 class="testimonial-name">Marko Novak</h5>
+                  <div class="testimonial-location">Ljubljana</div>
+                </div>
+                <div class="testimonial-rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="testimonial-card">
+              <p class="testimonial-quote">
+                Kot organizator dogodkov sem s pomočjo te platforme pridobil
+                veliko novih obiskovalcev. Uporaba je izjemno preprosta in
+                učinkovita.
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="images/dogodek7.jpg"
+                  alt="Uporabnica Ana"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h5 class="testimonial-name">Ana Kovač</h5>
+                  <div class="testimonial-location">Maribor</div>
+                </div>
+                <div class="testimonial-rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="testimonial-card">
+              <p class="testimonial-quote">
+                SkupajTukaj je postal moj prvi vir za načrtovanje vikendov. Všeč
+                mi je raznolikost dogodkov in preprosta prijava.
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="images/dogodek8.jpg"
+                  alt="Uporabnik Jure"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h5 class="testimonial-name">Jure Horvat</h5>
+                  <div class="testimonial-location">Celje</div>
+                </div>
+                <div class="testimonial-rating">★★★★☆</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4 mb-5">
+          <a href="#" class="btn-community">
+            <i class="bi bi-people-fill"></i>Postani del skupnosti
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistični razdelek -->
+    <section
+      class="statistics-section py-5 mt-4 bg-gradient-primary text-white"
+    >
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2>SkupajTukaj v številkah</h2>
+          <p class="lead">
+            Z vsakim dnem rastemo in povezujemo več ljudi z dogodki v njihovi
+            bližini
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-3 col-6">
+            <div class="stat-box text-center">
+              <div class="stat-icon mb-3">
+                <i class="bi bi-people-fill fs-1"></i>
+              </div>
+              <div class="stat-number" id="users-count" data-count="0">0</div>
+              <div class="stat-label">Aktivnih uporabnikov</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-box text-center">
+              <div class="stat-icon mb-3">
+                <i class="bi bi-building fs-1"></i>
+              </div>
+              <div class="stat-number" id="organizers-count" data-count="0">
+                0
+              </div>
+              <div class="stat-label">Organizatorjev</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-box text-center">
+              <div class="stat-icon mb-3">
+                <i class="bi bi-calendar2-event fs-1"></i>
+              </div>
+              <div class="stat-number" id="events-count" data-count="0">0</div>
+              <div class="stat-label">Dogodkov v zadnjem letu</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="stat-box text-center">
+              <div class="stat-icon mb-3">
+                <i class="bi bi-geo-alt-fill fs-1"></i>
+              </div>
+              <div class="stat-number" id="cities-count" data-count="0">0</div>
+              <div class="stat-label">Slovenskih mest</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontaktni obrazec -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-4">Kontakt</h2>
+        <div class="text-center mb-5">
+          <p>Če imate vprašanja ali potrebujete pomoč, smo vam na voljo.</p>
+        </div>
+
+        <div class="row">
+          <!-- Leva stran - kontaktni podatki -->
+          <div class="col-lg-5">
+            <div class="bg-primary text-white p-4 p-xl-5 rounded-3 h-100">
+              <h3 class="mb-4">Kontaktni podatki</h3>
+              <p class="mb-4">
+                Vedno smo tukaj za vas. Poišči nas, pokliči nas ali nam piši na
+                spodnji naslov.
+              </p>
+
+              <div class="d-flex mb-4">
+                <div class="contact-icon-circle me-3">
+                  <i class="bi bi-geo-alt fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="mb-1">Naša lokacija</h5>
+                  <p class="mb-0">Koroška cesta 46, 2000 Maribor</p>
+                </div>
+              </div>
+
+              <div class="d-flex mb-4">
+                <div class="contact-icon-circle me-3">
+                  <i class="bi bi-telephone fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="mb-1">Telefonska številka</h5>
+                  <p class="mb-0">+386 2 220 7000</p>
+                  <p class="mb-0">+386 2 220 7272</p>
+                </div>
+              </div>
+
+              <div class="d-flex mb-4">
+                <div class="contact-icon-circle me-3">
+                  <i class="bi bi-envelope fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="mb-1">E-poštni naslov</h5>
+                  <p class="mb-0">skupaj.tukaj@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desna stran - obrazec -->
+          <div class="col-lg-7 mt-4 mt-lg-0">
+            <div class="bg-white p-4 p-xl-5 rounded-3 shadow-sm h-100">
+              <h3 class="mb-4">Pišite nam</h3>
+              <form id="contact-form" class="needs-validation" novalidate>
+                <div class="row mb-3">
+                  <div class="col-12">
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="contact-name"
+                      class="form-control"
+                      placeholder="Vaše ime"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-12">
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="contact-email"
+                      class="form-control"
+                      placeholder="Vaš e-naslov"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <input
+                    type="text"
+                    id="contact-subject"
+                    name="contact-subject"
+                    class="form-control"
+                    placeholder="Zadeva"
+                    required
+                  />
+                </div>
+
+                <div class="mb-4">
+                  <textarea
+                    id="contact-message"
+                    name="contact-message"
+                    rows="5"
+                    class="form-control"
+                    placeholder="Vaše sporočilo"
+                    required
+                  ></textarea>
+                </div>
+                <div class="d-grid">
+                  <button
+                    type="submit"
+                    class="btn btn-primary px-4 py-3 rounded-pill fw-bold text-white shadow"
+                    style="font-size: 1.1rem; letter-spacing: 0.5px"
+                  >
+                    <i class="bi bi-send-fill me-2"></i>Pošlji sporočilo
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>SkupajTukaj</h5>
+            <p>Povezujemo lokalne organizatorje dogodkov z obiskovalci</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Hitre povezave</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white-50">Domov</a></li>
+              <li><a href="dogodki.html" class="text-white-50">Dogodki</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Sledite nam</h5>
+            <div>
+              <a href="https://www.facebook.com/profile.php?id=61577090338069" class="text-white me-3 fs-4"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="https://x.com/SkupajTukaj" class="text-white me-3 fs-4"
+                ><i class="bi bi-twitter-x"></i
+              ></a>
+              <a href="https://www.instagram.com/skupajtukaj/" class="text-white fs-4"
+                ><i class="bi bi-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <p class="mb-0">&copy; 2025 SkupajTukaj. Vse pravice pridržane.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <script src="js/animacija_stevcev.js"></script>
+    <script src="js/prihajajoči_dogodki.js"></script>
+    <script src="js/auth-status.js"></script>
+    <script src="js/tema.js"></script>
+    <script src="js/main-search.js"></script>
+    <script src="js/contact_us.js"></script>
+    <script src="js/rojstni_dan.js"></script>
+  </body>
+</html>

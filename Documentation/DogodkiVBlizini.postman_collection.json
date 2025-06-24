@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "98f610cf-804f-4db2-81b4-ec33dbb3ce6e",
+		"name": "DogodkiVBlizini",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13317923"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"luka1.grobelnik@gmail.com\",\r\n    \"password\": \"Geslo123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ime\": \"ime\",\r\n    \"priimek\": \"priimek\",\r\n    \"email\": \"test4@gmail.com\",\r\n    \"geslo\": \"geslo\",\r\n    \"datumRojstva\": \"2005-03-03\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all dogodki",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/dogodki/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dogodki",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "jePromoviran",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "naslov",
+							"value": "rock",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new dogodek",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVwb3JhYm5payI6MiwidGlwX3Vwb3JhYm5pa2EiOiJBZG1pbmlzdHJhdG9yIiwiaWF0IjoxNzQ3MTUzODYzLCJleHAiOjE3NDcxNTc0NjN9.bpJytNAElh-EcnYznWYy2rVEQfZXBqOI-tXTxKEHa5M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"naslov_dogodka\": \"Jazz Night\",\r\n  \"cas\": \"2025-07-20 20:00:00\",\r\n  \"opis\": \"Live jazz music in the city square.\",\r\n  \"slika\": \"https://example.com/jazz.jpg\",\r\n  \"naslov\": {\r\n    \"ulica\": \"Trg svobode\",\r\n    \"hisna_stevilka\": \"15\",\r\n    \"postna_stevilka\": \"1000\",\r\n    \"obcina\": \"Ljubljana\"\r\n  },\r\n  \"tip_dogodka\": \"Koncert\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dogodki/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dogodki",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get dogodek by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/dogodki/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dogodki",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete dogodek by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVwb3JhYm5payI6MiwidGlwX3Vwb3JhYm5pa2EiOiJBZG1pbmlzdHJhdG9yIiwiaWF0IjoxNzQ3MTUzODYzLCJleHAiOjE3NDcxNTc0NjN9.bpJytNAElh-EcnYznWYy2rVEQfZXBqOI-tXTxKEHa5M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/dogodki/16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dogodki",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get komentar by id dogodka",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/komentarji/?id_dogodka=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"komentarji",
+						""
+					],
+					"query": [
+						{
+							"key": "id_dogodka",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create komentar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVwb3JhYm5payI6MiwidGlwX3Vwb3JhYm5pa2EiOiJBZG1pbmlzdHJhdG9yIiwiaWF0IjoxNzQ3MTU1MzM4LCJleHAiOjE3NDcxNTg5Mzh9.bReas3HudQ-QwIupTpvPBTnEN63PHeU0Yei8kp2HCEs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"komentar\": \"123\",\r\n    \"id_dogodka\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/komentarji/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"komentarji",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all ocene by dogodek id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ocene/?id_dogodka=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ocene",
+						""
+					],
+					"query": [
+						{
+							"key": "id_dogodka",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new ocena",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVwb3JhYm5payI6MiwidGlwX3Vwb3JhYm5pa2EiOiJBZG1pbmlzdHJhdG9yIiwiaWF0IjoxNzQ3MTU1MzM4LCJleHAiOjE3NDcxNTg5Mzh9.bReas3HudQ-QwIupTpvPBTnEN63PHeU0Yei8kp2HCEs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ocena\": 4,\r\n    \"id_dogodka\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/ocene/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ocene",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete komentar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVwb3JhYm5payI6MiwidGlwX3Vwb3JhYm5pa2EiOiJBZG1pbmlzdHJhdG9yIiwiaWF0IjoxNzQ3MTU1MzM4LCJleHAiOjE3NDcxNTg5Mzh9.bReas3HudQ-QwIupTpvPBTnEN63PHeU0Yei8kp2HCEs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"luka1.grobelnik@gmail.com\",\r\n    \"password\": \"Geslo123\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/komentarji/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"komentarji",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
