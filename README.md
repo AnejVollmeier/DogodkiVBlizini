@@ -100,10 +100,6 @@ Spletno stran lahko najdete na [skupajtukaj.si](https://skupajtukaj.si/), spletn
 
 ## Avtorji
 
-- Matija Gusel,
 - Anej Vollmeier,
-- Luka Grobelnik,
-- Jan Mrkonjič
-
-Mentor: Gaja Gujt
+- 3-je sošolci,
 
